@@ -105,6 +105,8 @@ def run(img_path):
     -------
     None
     """
+    print(f'\nProcessing {os.path.abspath(img_path)}\n')
+    
     os.makedirs(config.save_path, exist_ok=True)
 
     img_orig = cv2.imread(img_path)
@@ -158,6 +160,9 @@ def run(img_path):
     cv2.imwrite(f'{config.save_path}/{os.path.basename(img_path)}_marked_image.png', viz_img)
     df = pd.DataFrame(result_dict)
     df.to_csv(f'{config.save_path}/{os.path.basename(img_path)}_result_df.csv', index=False)
+    
+    print(f'\nResults are saved to {os.path.abspath(config.save_path)}\n')
+    
 
 
 if __name__ == '__main__':
